@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axiosInstance from '../../utils/axios';
 import Cookies from 'js-cookie';
+import { isMockApi, mockUser } from '../../utils/mockApi';
 
 interface User {
   id: string;
@@ -20,9 +21,13 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: typeof window !== 'undefined' && localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null,
-  token: Cookies.get('token') || null,
-  isAuthenticated: !!Cookies.get('token'),
+  user: isMockApi
+    ? mockUser
+    : typeof window !== 'undefined' && localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user')!)
+      : null,
+  token: isMockApi ? 'mock-token' : Cookies.get('token') || null,
+  isAuthenticated: isMockApi ? true : !!Cookies.get('token'),
   loading: false,
   error: null,
 };
@@ -48,6 +53,13 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
+      if (isMockApi) {
+        state.user = mockUser;
+        state.token = 'mock-token';
+        state.isAuthenticated = true;
+        state.error = null;
+        return;
+      }
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;

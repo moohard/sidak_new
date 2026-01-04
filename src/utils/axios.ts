@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
+import { isMockApi, mockAdapter } from './mockApi';
 
 const axiosInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -12,6 +13,10 @@ const axiosInstance = axios.create({
 // Request interceptor to add the auth token header to every request
 axiosInstance.interceptors.request.use(
   (config) => {
+    if (isMockApi) {
+      config.adapter = mockAdapter;
+      return config;
+    }
     const token = Cookies.get('token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
@@ -29,7 +34,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
+    if (!isMockApi && error.response && error.response.status === 401) {
       // Clear token and redirect to login if unauthorized
       Cookies.remove('token');
       // Optional: Redirect to login page
