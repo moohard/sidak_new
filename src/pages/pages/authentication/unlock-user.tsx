@@ -41,7 +41,7 @@ const UnlockUser = () => {
                         <Button color="primary" className="btn-block w-100">{Unlock}</Button>
                       </FormGroup>
                       <p className="mt-4 mb-0">{HaveAccount}
-                        <Link className="ms-2" href="/pages/authentication/login-simple">{SignIn}</Link>
+                        <Link className="ms-2" href="/login">{SignIn}</Link>
                       </p>
                     </form>
                   </div>

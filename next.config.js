@@ -16,8 +16,33 @@ const nextConfig = {
     return [
       {
         source: "/",
-        destination: "/authentication/login",
+        destination: "/login",
         permanent: true,
+      },
+      {
+        source: "/authentication/login",
+        destination: "/login",
+        permanent: true,
+      },
+      {
+        source: "/pages/authentication/login-simple",
+        destination: "/login",
+        permanent: false,
+      },
+      {
+        source: "/pages/authentication/register-simple",
+        destination: "/register",
+        permanent: false,
+      },
+      {
+        source: "/pages/authentication/sign-up-two",
+        destination: "/register",
+        permanent: false,
+      },
+      {
+        source: "/pages/authentication/forget-pwd",
+        destination: "/forgot-password",
+        permanent: false,
       },
     ];
   },

@@ -35,7 +35,7 @@ const CommonForm = ({ alignLogo }: commonFormPropsType) => {
                 <Input id="checkbox1" type="checkbox" />
                 <Label className="text-muted" htmlFor="checkbox1">{RememberPassword}</Label>
               </div>
-              <Link className="link" href="/pages/authentication/forget-pwd">{ForgotPassword}</Link>
+              <Link className="link" href="/forgot-password">{ForgotPassword}</Link>
               <div className="text-end mt-3">
                 <Button color="primary" className="btn-block w-100" type="submit">{SignIn}</Button>
               </div>
@@ -55,7 +55,7 @@ const CommonForm = ({ alignLogo }: commonFormPropsType) => {
               </div>
             </div>
             <p className="mt-4 mb-0 text-center">
-              {DoNotAccount}<Link className="ms-2" href="/pages/authentication/register-simple">{CreateAccount}</Link>
+              {DoNotAccount}<Link className="ms-2" href="/register">{CreateAccount}</Link>
             </p>
           </form>
         </div>

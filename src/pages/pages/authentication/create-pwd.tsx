@@ -39,7 +39,7 @@ const CreatePassword = () => {
                       <Button color="primary" className="btn-block w-100">{Done}</Button>
                     </FormGroup>
                     <p className="mt-4 mb-0 text-center">{DoNotAccount}
-                      <Link className="ms-2" href="/pages/authentication/register-simple">{CreateAccount}</Link>
+                      <Link className="ms-2" href="/register">{CreateAccount}</Link>
                     </p>
                   </form>
                 </div>

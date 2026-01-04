@@ -109,7 +109,7 @@ const Login = () => {
                     </div>
                     <Link
                       className="link"
-                      href="/pages/authentication/forget-pwd"
+                      href="/forgot-password"
                     >
                       {ForgotPassword}
                     </Link>
@@ -160,7 +160,7 @@ const Login = () => {
                     {DoNotAccount}
                     <Link
                       className="ms-2"
-                      href="/pages/authentication/register-simple"
+                      href="/register"
                     >
                       {CreateAccount}
                     </Link>

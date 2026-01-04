@@ -13,7 +13,7 @@ const Profile = () => {
 
   const handleLogOut = () => {
     Cookies.remove('token')
-    router.push("/authentication/login");
+    router.push("/login");
   };
   return (
     <li className="profile-nav onhover-dropdown pe-0 py-0">

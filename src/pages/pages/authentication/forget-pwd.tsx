@@ -157,7 +157,7 @@ const ForgetPassWord = () => {
                       {havePassword}
                       <Link
                         className="ms-2"
-                        href="/pages/authentication/sign-up-two"
+                        href="/login"
                       >
                         {Signin}
                       </Link>
