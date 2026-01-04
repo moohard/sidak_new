@@ -6,6 +6,7 @@ import rekapReducer from './slices/rekapSlice';
 import absensiReducer from './slices/absensiSlice';
 import tteReducer from './slices/tteSlice';
 import cmsReducer from './slices/cmsSlice';
+import reportingReducer from './slices/reportingSlice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ export const store = configureStore({
     absensi: absensiReducer,
     tte: tteReducer,
     cms: cmsReducer,
+    reporting: reportingReducer,
   },
 });
 
