@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchLaporanSDM } from "@/redux/slices/reportingSlice";
 import { fetchAllReferensi } from "@/redux/slices/referensiSlice";
 import { toast } from "react-toastify";
 import { Download, Search, Printer } from "react-feather";
-import * as XLSX from "xlsx";
+import { exportJsonToXlsx } from "@/utils/excel";
 
 const LaporanSDM = () => {
   const dispatch = useAppDispatch();
@@ -34,12 +34,26 @@ const LaporanSDM = () => {
     dispatch(fetchLaporanSDM(filters));
   };
 
-  const handleExport = () => {
-    const ws = XLSX.utils.json_to_sheet(sdmLaporan);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, "Laporan SDM");
-    XLSX.writeFile(wb, `Laporan_SDM_${new Date().getTime()}.xlsx`);
-    toast.success("Laporan berhasil diekspor ke Excel.");
+  const handleExport = async () => {
+    try {
+      await exportJsonToXlsx({
+        data: sdmLaporan,
+        fileName: `Laporan_SDM_${new Date().getTime()}.xlsx`,
+        sheetName: "Laporan SDM",
+        columns: [
+          "nip",
+          "nama",
+          "unit_kerja",
+          "golongan",
+          "jabatan",
+          "jenis_pegawai",
+          "status_pegawai",
+        ],
+      });
+      toast.success("Laporan berhasil diekspor ke Excel.");
+    } catch (error) {
+      toast.error("Gagal mengekspor laporan.");
+    }
   };
 
   const columns = [

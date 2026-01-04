@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Form, FormGroup, Label, Input } from "reactstrap";
-import Breadcrumbs from "../../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../../CommonElements/Breadcrumbs";
 import { getNewsDetail, updateNews, getNewsCategories } from "../../../../api/newsService";
 import { toast } from "react-toastify";
 import { useRouter } from "next/router";
@@ -8,9 +8,7 @@ import { useForm, Controller } from "react-hook-form";
 import dynamic from "next/dynamic";
 import { ArrowLeft, Save } from "react-feather";
 import { compressImage } from "../../../../utils/imageCompressor";
-
 const CKEditor = dynamic(() => import("@ckeditor/ckeditor5-react").then(mod => mod.CKEditor), { ssr: false });
-const ClassicEditor = dynamic(() => import("@ckeditor/ckeditor5-build-classic"), { ssr: false });
 
 const EditNews = () => {
   const router = useRouter();
@@ -19,10 +17,13 @@ const EditNews = () => {
   const [loading, setLoading] = useState(false);
   const [fetching, setFetching] = useState(true);
   const [preview, setPreview] = useState<string | null>(null);
+  const [editorLoaded, setEditorLoaded] = useState(false);
+  const [editorInstance, setEditorInstance] = useState<any>(null);
 
   const { register, handleSubmit, control, setValue, reset, formState: { errors } } = useForm();
 
   useEffect(() => {
+    let isMounted = true;
     const fetchInitialData = async () => {
       try {
         const [catRes, newsRes] = await Promise.all([
@@ -53,6 +54,21 @@ const EditNews = () => {
     if (id) {
       fetchInitialData();
     }
+    import("@ckeditor/ckeditor5-build-classic")
+      .then((mod) => {
+        if (isMounted) {
+          setEditorInstance(mod.default);
+          setEditorLoaded(true);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setEditorLoaded(false);
+        }
+      });
+    return () => {
+      isMounted = false;
+    };
   }, [id, reset]);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,14 +146,18 @@ const EditNews = () => {
                           control={control}
                           rules={{ required: "Konten tidak boleh kosong" }}
                           render={({ field }) => (
-                            <CKEditor
-                              editor={ClassicEditor as any}
-                              data={field.value || ""}
-                              onChange={(event, editor) => {
-                                const data = editor.getData();
-                                field.onChange(data);
-                              }}
-                            />
+                            editorLoaded ? (
+                              <CKEditor
+                                editor={editorInstance}
+                                data={field.value || ""}
+                                onChange={(_event: any, editor: any) => {
+                                  const data = editor.getData();
+                                  field.onChange(data);
+                                }}
+                              />
+                            ) : (
+                              <div className="text-muted">Memuat editor...</div>
+                            )
                           )}
                         />
                         {errors.content && <span className="text-danger">{errors.content.message as string}</span>}

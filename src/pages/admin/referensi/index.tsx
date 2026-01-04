@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, ListGroup, ListGroupItem, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
-import { REFERENCE_CONFIG } from "./config";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
+import { REFERENCE_CONFIG } from "@/utils/referenceConfig";
 import { getGenericList, createGeneric, updateGeneric, deleteGeneric } from "../../../api/genericService";
 import { toast } from "react-toastify";
 import { Plus, Edit, Trash, Download, Upload } from "react-feather";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import * as XLSX from "xlsx";
+import { exportJsonToXlsx, parseXlsxFile } from "@/utils/excel";
 
 const ReferenceAdmin = () => {
   const [selectedKey, setSelectedKey] = useState("agama");
@@ -36,38 +36,47 @@ const ReferenceAdmin = () => {
     fetchData(selectedKey);
   }, [selectedKey]);
 
-  const handleExport = () => {
-    const ws = XLSX.utils.json_to_sheet(data);
-    const wb = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, currentConfig.title);
-    XLSX.writeFile(wb, `Referensi_${currentConfig.title}.xlsx`);
-    toast.success("File Excel berhasil diunduh.");
+  const handleExport = async () => {
+    try {
+      await exportJsonToXlsx({
+        data,
+        fileName: `Referensi_${currentConfig.title}.xlsx`,
+        sheetName: currentConfig.title,
+      });
+      toast.success("File Excel berhasil diunduh.");
+    } catch (error) {
+      toast.error("Gagal mengekspor data.");
+    }
   };
 
-  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImport = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = async (evt) => {
-      const bstr = evt.target?.result;
-      const wb = XLSX.read(bstr, { type: "binary" });
-      const wsname = wb.SheetNames[0];
-      const ws = wb.Sheets[wsname];
-      const importedData = XLSX.utils.sheet_to_json(ws);
+    if (!file.name.toLowerCase().endsWith(".xlsx")) {
+      toast.error("Format file harus .xlsx");
+      e.target.value = "";
+      return;
+    }
 
-      try {
-        toast.info(`Mengimpor ${importedData.length} data...`);
-        for (const item of importedData) {
-          await createGeneric(currentConfig.endpoint, item);
-        }
-        toast.success("Data berhasil diimpor.");
-        fetchData(selectedKey);
-      } catch (error) {
-        toast.error("Gagal mengimpor data.");
+    try {
+      const importedData = await parseXlsxFile(file);
+      if (importedData.length === 0) {
+        toast.error("File Excel kosong atau tidak valid.");
+        e.target.value = "";
+        return;
       }
-    };
-    reader.readAsBinaryString(file);
+      toast.info(`Mengimpor ${importedData.length} data...`);
+      for (const item of importedData) {
+        await createGeneric(currentConfig.endpoint, item);
+      }
+      toast.success("Data berhasil diimpor.");
+      fetchData(selectedKey);
+    } catch (error) {
+      toast.error("Gagal mengimpor data.");
+    } finally {
+      e.target.value = "";
+    }
   };
 
   const toggleModal = () => {
@@ -177,7 +186,7 @@ const ReferenceAdmin = () => {
                       <Button color="info" size="sm" onClick={() => document.getElementById("import-file")?.click()}>
                         <Upload size={14} className="me-1" /> Impor
                       </Button>
-                      <input type="file" id="import-file" accept=".xlsx, .xls" onChange={handleImport} className="d-none" />
+                      <input type="file" id="import-file" accept=".xlsx" onChange={handleImport} className="d-none" />
                     </div>
                     <Button color="primary" size="sm" onClick={toggleModal}>
                       <Plus size={14} className="me-1" /> Tambah {currentConfig.title}
