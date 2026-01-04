@@ -22,7 +22,10 @@ export const withoutLayoutThemePath = [
   "/pages/authentication/forget-pwd",
   "/pages/authentication/create-pwd",
   "/pages/authentication/maintenance",
-  "/authentication/login"
+  "/authentication/login",
+  "/login",
+  "/register",
+  "/forgot-password"
 ];
 
 
