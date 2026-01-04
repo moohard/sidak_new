@@ -60,6 +60,7 @@ const PegawaiDetail = () => {
   if (!pegawai) return <div className="p-5 text-center">Pegawai tidak ditemukan.</div>;
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Detail Pegawai" parent="Kepegawaian" title={pegawai.nama} />
       <Container fluid={true}>
@@ -292,6 +293,7 @@ const PegawaiDetail = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

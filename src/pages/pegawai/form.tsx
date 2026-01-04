@@ -99,6 +99,7 @@ const PegawaiForm = () => {
   </Row>
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle={isEdit ? "Edit Pegawai" : "Tambah Pegawai"} parent="Kepegawaian" title="Form Pegawai" />
       <Container fluid={true}>
@@ -172,6 +173,7 @@ const PegawaiForm = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

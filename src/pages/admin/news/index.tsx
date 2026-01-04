@@ -130,6 +130,7 @@ const NewsList = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Manajemen Berita" parent="Admin" title="CMS" />
       <Container fluid={true}>
@@ -200,6 +201,7 @@ const NewsList = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

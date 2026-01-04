@@ -69,6 +69,7 @@ const LaporanKehadiran = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Laporan Kehadiran & Uang Makan" parent="Laporan" title="Absensi" />
       <Container fluid={true}>
@@ -130,6 +131,7 @@ const LaporanKehadiran = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

@@ -45,6 +45,7 @@ const MonitoringBerkala = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Monitoring Kenaikan Gaji Berkala" parent="Monitoring" title="Kepegawaian" />
       <Container fluid={true}>
@@ -92,6 +93,7 @@ const MonitoringBerkala = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

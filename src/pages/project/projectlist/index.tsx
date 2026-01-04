@@ -2,7 +2,9 @@ import React from 'react'
 
 const ProjectList = () => {
     return (
-        <div>ProjectList</div>
+        <div className="page-body">
+            <div>ProjectList</div>
+        </div>
     )
 }
 

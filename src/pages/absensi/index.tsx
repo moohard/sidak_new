@@ -88,6 +88,7 @@ const AttendanceMonitoring = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Monitoring Kehadiran" parent="Absensi" title="Monitoring Harian" />
       <Container fluid={true}>
@@ -154,6 +155,7 @@ const AttendanceMonitoring = () => {
         </ModalBody>
       </Modal>
     </>
+    </div>
   );
 };
 

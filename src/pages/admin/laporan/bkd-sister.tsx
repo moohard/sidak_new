@@ -96,6 +96,7 @@ const BkdSisterManagement = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Laporan BKD Sister" parent="Laporan" title="Integrasi" />
       <Container fluid={true}>
@@ -146,6 +147,7 @@ const BkdSisterManagement = () => {
         </ModalFooter>
       </Modal>
     </>
+    </div>
   );
 };
 

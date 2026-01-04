@@ -185,6 +185,7 @@ const SlideManagement = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Manajemen Slide Beranda" parent="Admin" title="CMS" />
       <Container fluid={true}>
@@ -269,6 +270,7 @@ const SlideManagement = () => {
         </Form>
       </Modal>
     </>
+    </div>
   );
 };
 

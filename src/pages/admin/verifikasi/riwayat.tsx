@@ -48,6 +48,7 @@ const AdminHistoryVerification = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Verifikasi Riwayat" parent="Admin" title="Verifikasi" />
       <Container fluid={true}>
@@ -95,6 +96,7 @@ const AdminHistoryVerification = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

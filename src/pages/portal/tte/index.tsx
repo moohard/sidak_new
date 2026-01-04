@@ -42,6 +42,7 @@ const TTEPortal = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Portal TTE" parent="Portal" title="Tanda Tangan Elektronik" />
       <Container fluid={true}>
@@ -105,6 +106,7 @@ const TTEPortal = () => {
         </ModalBody>
       </Modal>
     </>
+    </div>
   );
 };
 

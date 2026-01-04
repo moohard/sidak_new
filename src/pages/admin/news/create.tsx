@@ -98,6 +98,7 @@ const CreateNews = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Tambah Berita Baru" parent="Admin" title="Manajemen Berita" />
       <Container fluid={true}>
@@ -208,6 +209,7 @@ const CreateNews = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

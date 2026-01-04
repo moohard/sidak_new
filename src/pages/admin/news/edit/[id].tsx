@@ -114,6 +114,7 @@ const EditNews = () => {
   if (fetching) return <div className="p-5 text-center">Memuat data...</div>;
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Edit Berita" parent="Admin" title="Manajemen Berita" />
       <Container fluid={true}>
@@ -223,6 +224,7 @@ const EditNews = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

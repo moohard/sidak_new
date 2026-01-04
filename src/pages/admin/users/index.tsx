@@ -30,6 +30,7 @@ const UserManagement = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Manajemen User" parent="Admin" title="Daftar Pengguna" />
       <Container fluid={true}>
@@ -86,6 +87,7 @@ const UserManagement = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

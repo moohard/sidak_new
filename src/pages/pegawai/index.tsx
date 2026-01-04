@@ -114,6 +114,7 @@ const PegawaiList = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Daftar Pegawai" parent="Kepegawaian" title="Daftar Pegawai" />
       <Container fluid={true}>
@@ -211,6 +212,7 @@ const PegawaiList = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

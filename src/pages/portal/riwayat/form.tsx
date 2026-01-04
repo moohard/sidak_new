@@ -56,6 +56,7 @@ const HistoryProposalForm = () => {
     switch (type) {
       case "jabatan":
         return (
+    <div className="page-body">
           <>
             <FormGroup>
               <Label>Nama Jabatan</Label>
@@ -154,6 +155,7 @@ const HistoryProposalForm = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

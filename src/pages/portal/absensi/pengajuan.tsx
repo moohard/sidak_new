@@ -26,6 +26,7 @@ const LeaveProposalForm = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Pengajuan Izin/Cuti" parent="Portal" title="Form Pengajuan" />
       <Container fluid={true}>
@@ -82,6 +83,7 @@ const LeaveProposalForm = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

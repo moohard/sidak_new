@@ -149,6 +149,7 @@ const ReferenceAdmin = () => {
   ];
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Administrasi Referensi" parent="Admin" title="Data Master" />
       <Container fluid={true}>
@@ -218,6 +219,7 @@ const ReferenceAdmin = () => {
         </Form>
       </Modal>
     </>
+    </div>
   );
 };
 

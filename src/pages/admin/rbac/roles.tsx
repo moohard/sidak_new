@@ -28,6 +28,7 @@ const RoleManagement = () => {
   }, []);
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Manajemen Role" parent="RBAC" title="Role & Groups" />
       <Container fluid={true}>
@@ -74,6 +75,7 @@ const RoleManagement = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

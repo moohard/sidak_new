@@ -63,6 +63,7 @@ const PermissionMatrix = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Matriks Hak Akses" parent="RBAC" title="Set Permissions" />
       <Container fluid={true}>
@@ -108,6 +109,7 @@ const PermissionMatrix = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 

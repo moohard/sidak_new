@@ -45,6 +45,7 @@ const AdminTTEManagement = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Manajemen TTE" parent="Admin" title="Monitoring TTE" />
       <Container fluid={true}>
@@ -141,6 +142,7 @@ const AdminTTEManagement = () => {
         </ModalFooter>
       </Modal>
     </>
+    </div>
   );
 };
 

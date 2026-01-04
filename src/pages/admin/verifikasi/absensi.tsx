@@ -35,6 +35,7 @@ const AdminLeaveVerification = () => {
   };
 
   return (
+    <div className="page-body">
     <>
       <Breadcrumbs mainTitle="Verifikasi Izin/Cuti" parent="Admin" title="Verifikasi Absensi" />
       <Container fluid={true}>
@@ -81,6 +82,7 @@ const AdminLeaveVerification = () => {
         </Row>
       </Container>
     </>
+    </div>
   );
 };
 
