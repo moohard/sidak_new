@@ -30,27 +30,27 @@ const AllCards = () => {
                 <span className="f-light">{item.email}</span>
                 <ul className="card-social">
                   <li>
-                    <a href="https://www.facebook.com/" target="_blank">
+                    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://accounts.google.com/" target="_blank">
+                    <a href="https://accounts.google.com/" target="_blank" rel="noreferrer">
                       <i className="fa fa-google-plus" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://twitter.com/" target="_blank">
+                    <a href="https://twitter.com/" target="_blank" rel="noreferrer">
                       <i className="fa fa-twitter" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.instagram.com/" target="_blank">
+                    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
                       <i className="fa fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="https://rss.app/" target="_blank">
+                    <a href="https://rss.app/" target="_blank" rel="noreferrer">
                       <i className="fa fa-rss" />
                     </a>
                   </li>

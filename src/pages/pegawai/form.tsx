@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useForm, Controller } from "react-hook-form";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { fetchAllReferensi } from "../../redux/slices/referensiSlice";
-import { createPegawai, updatePegawai, getPegawaiData } from "../../api/pegawaiService";
+import { createPegawai, updatePegawai, getPegawaiData, updateFotoPegawai } from "../../api/pegawaiService";
 import { toast } from "react-toastify";
 
 const PegawaiForm = () => {

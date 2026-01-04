@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useForm } from "react-hook-form";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { toast } from "react-toastify";
 import * as absensiApi from "../../../api/absensiService";
 import { useRouter } from "next/router";

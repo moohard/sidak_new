@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Badge } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchBkdSisterList } from "@/redux/slices/reportingSlice";
 import { uploadLapBkdSister, deleteLapBkdSister } from "@/api/lapBkdSisterService";

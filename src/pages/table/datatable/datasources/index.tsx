@@ -1,9 +1,9 @@
 import { Container, Row } from "reactstrap";
 import Breadcrumbs from "CommonElements/Breadcrumbs";
-import HtmlSourcedData from "@/components/table/DataTable/DataSources/HtmlSourcedData";
-import AjaxSourcedData from "@/components/table/DataTable/DataSources/AjaxSourcedData";
-import JavaScriptSourcedData from "@/components/table/DataTable/DataSources/JavaScriptSourcedData";
-import ServerSideProcessing from "@/components/table/DataTable/DataSources/ServerSideProcessing";
+import HtmlSourcedData from "@/components/Table/DataTable/DataSources/HtmlSourcedData";
+import AjaxSourcedData from "@/components/Table/DataTable/DataSources/AjaxSourcedData";
+import JavaScriptSourcedData from "@/components/Table/DataTable/DataSources/JavaScriptSourcedData";
+import ServerSideProcessing from "@/components/Table/DataTable/DataSources/ServerSideProcessing";
 import { DATASourceDataTables, DataTables } from "utils/Constant";
 
 const DataSources = () => {

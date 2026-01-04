@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Table, Button, Nav, NavItem, NavLink, TabContent, TabPane } from "reactstrap";
 import classnames from "classnames";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import * as riwayatApi from "../../../api/riwayatService";
 import { toast } from "react-toastify";
 

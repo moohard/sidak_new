@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Card, CardBody, Table, Input, Button } from "reactstrap";
-import Breadcrumbs from "../../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../../CommonElements/Breadcrumbs";
 import * as rbacApi from "../../../../api/rbacService";
 import { toast } from "react-toastify";
 

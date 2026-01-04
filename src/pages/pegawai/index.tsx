@@ -1,13 +1,17 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { useRouter } from "next/router";
 import { Container, Row, Col, Card, CardBody, Input, Button, Label, FormGroup } from "reactstrap";
 import DataTable from "react-data-table-component";
 import { Search, Filter } from "react-feather";
-import { getPegawaiList } from "../../api/pegawaiService";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import { getPegawaiList, softDeletePegawai } from "../../api/pegawaiService";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllReferensi } from "../../redux/slices/referensiSlice";
+import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const PegawaiList = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const { unit, golongan, pegawaiJenis } = useAppSelector((state) => state.referensi);
   
@@ -71,12 +75,6 @@ const PegawaiList = () => {
     setFilterGolongan("");
     fetchPegawai(1, perPage, searchTerm, { unit: "", jenis: "", golongan: "" });
   };
-
-import Swal from "sweetalert2";
-import { softDeletePegawai } from "../../api/pegawaiService";
-import { toast } from "react-toastify";
-
-// ... Di dalam komponen PegawaiList ...
 
   const handleDelete = (nip: string, nama: string) => {
     Swal.fire({

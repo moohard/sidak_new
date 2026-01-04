@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Table, Badge } from "reactstrap";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import * as rbacApi from "../../../api/rbacService";
 import { toast } from "react-toastify";
 import { Lock, UserX, UserCheck, Edit } from "react-feather";

@@ -1,9 +1,9 @@
 import { Container, Row } from "reactstrap";
 import Breadcrumbs from "CommonElements/Breadcrumbs";
-import AddRows from "@/components/table/DataTable/Api/AddRows";
-import ChildRows from "@/components/table/DataTable/Api/ChildRows";
-import RowSelectionAndDeletion from "@/components/table/DataTable/Api/RowSelectionAndDeletion";
-import CustomFiltering from "@/components/table/DataTable/Api/CustomFiltering";
+import AddRows from "@/components/Table/DataTable/Api/AddRows";
+import ChildRows from "@/components/Table/DataTable/Api/ChildRows";
+import RowSelectionAndDeletion from "@/components/Table/DataTable/Api/RowSelectionAndDeletion";
+import CustomFiltering from "@/components/Table/DataTable/Api/CustomFiltering";
 import { APIHeading, DataTables } from "utils/Constant";
 
 const Api = () => {

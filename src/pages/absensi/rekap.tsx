@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Table, Input, Button, FormGroup, Label } from "reactstrap";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
-import * as absensiApi from "../../../api/absensiService";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
+import * as absensiApi from "../../api/absensiService";
 import { toast } from "react-toastify";
 import { Download } from "react-feather";
 

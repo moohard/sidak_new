@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabContent, TabPane, Badge, Button } from "reactstrap";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { useAppSelector } from "@/redux/hooks";
 import { getAbsensiKehadiranList, getPengajuanAbsensiList } from "@/api/absensiService";
 import DataTable from "react-data-table-component";

@@ -95,20 +95,6 @@ const reportingSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addMatcher(
-        (action) => action.type.endsWith("/pending"),
-        (state) => {
-          state.loading = true;
-          state.error = null;
-        }
-      )
-      .addMatcher(
-        (action) => action.type.endsWith("/rejected"),
-        (state, action) => {
-          state.loading = false;
-          state.error = action.payload as string;
-        }
-      )
       .addCase(fetchLaporanSDM.fulfilled, (state, action) => {
         state.loading = false;
         state.sdmLaporan = action.payload;
@@ -128,7 +114,21 @@ const reportingSlice = createSlice({
       .addCase(fetchBkdSisterList.fulfilled, (state, action) => {
         state.loading = false;
         state.bkdSisterList = action.payload;
-      });
+      })
+      .addMatcher(
+        (action) => action.type.endsWith("/pending"),
+        (state) => {
+          state.loading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        (action) => action.type.endsWith("/rejected"),
+        (state, action) => {
+          state.loading = false;
+          state.error = action.payload as string;
+        }
+      );
   },
 });
 

@@ -66,8 +66,7 @@ export const todayProgressData: ChartOptionType = {
                 colors: 'var(--chart-text-color)',
             },
             markers: {
-                width: 6,
-                height: 6,
+                size: 6,
             },
         },
         responsive: [

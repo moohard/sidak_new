@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import { useForm } from "react-hook-form";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { useAppSelector } from "../../../redux/hooks";
 import { toast } from "react-toastify";
 import * as riwayatApi from "../../../api/riwayatService";

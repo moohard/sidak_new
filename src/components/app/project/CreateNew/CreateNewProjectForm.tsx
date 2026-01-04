@@ -73,7 +73,10 @@ const CreateNewProjectForm = () => {
         <Col sm={4}>
           <FormGroup class="create-group">
             <Label>{ProjectStatus}</Label>
-            <select placeholder="Select Status" className="form-control digits" required {...register("badge", { required: true })}>
+            <select className="form-control digits" defaultValue="" required {...register("badge", { required: true })}>
+              <option value="" disabled>
+                Select Status
+              </option>
               <option value="Done">{Done}</option>
               <option value="Doing">{Doing}</option>
             </select>
@@ -84,7 +87,10 @@ const CreateNewProjectForm = () => {
         <Col sm={4}>
           <FormGroup class="create-group">
             <Label>{Issues}</Label>
-            <select placeholder="Select Issues" className="form-control digits" required {...register("issues", { required: true })}>
+            <select className="form-control digits" defaultValue="" required {...register("issues", { required: true })}>
+              <option value="" disabled>
+                Select Issues
+              </option>
               <option>{Small}</option>
               <option>{Medium}</option>
               <option>{Big}</option>

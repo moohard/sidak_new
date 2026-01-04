@@ -2115,9 +2115,7 @@ export const radialChartLive:ApexOptions = {
         colors: '#2C323F',
       },
       markers: {
-        width: 86,
-        height: 18,
-        radius: 3,
+        size: 18,
       },
     },
     colors: [secondary, primary, '#51bb25'],
@@ -2139,9 +2137,7 @@ export const radialChartLive:ApexOptions = {
               colors: '#2C323F',
             },
             markers: {
-              width: 50,
-              height: 10,
-              radius: 2,
+              size: 10,
             },
           },
         },
@@ -2162,9 +2158,7 @@ export const radialChartLive:ApexOptions = {
               colors: '#2C323F',
             },
             markers: {
-              width: 20,
-              height: 8,
-              radius: 2,
+              size: 8,
             },
           },
         },

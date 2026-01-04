@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Badge, Input, FormGroup, Label } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { getNewsList, deleteNews, getNewsCategories } from "../../../api/newsService";
 import { toast } from "react-toastify";
 import { Plus, Edit, Trash, Eye } from "react-feather";
@@ -143,7 +143,7 @@ const NewsList = () => {
                       <Label size="sm">Kategori</Label>
                       <Input
                         type="select"
-                        size="sm"
+                        bsSize="sm"
                         value={filters.category}
                         onChange={(e) => setFilters({ ...filters, category: e.target.value })}
                       >
@@ -157,7 +157,7 @@ const NewsList = () => {
                       <Label size="sm">Status</Label>
                       <Input
                         type="select"
-                        size="sm"
+                        bsSize="sm"
                         value={filters.status}
                         onChange={(e) => setFilters({ ...filters, status: e.target.value })}
                       >
@@ -172,7 +172,7 @@ const NewsList = () => {
                             <Label size="sm">Cari</Label>
                             <Input
                                 type="text"
-                                size="sm"
+                                bsSize="sm"
                                 placeholder="Cari judul..."
                                 value={filters.search}
                                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}

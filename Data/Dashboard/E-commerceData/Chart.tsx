@@ -234,8 +234,7 @@ export const MonthlyProfitsChartData: MonthlyProfitsChartData = {
         colors: ["var(--chart-text-color)"],
       },
       markers: {
-        width: 6,
-        height: 6,
+        size: 6,
       },
       itemMargin: {
         horizontal: 7,
@@ -733,9 +732,7 @@ export const OptionsVisitorChart = {
         colors: "var(--chart-text-color)",
       },
       markers: {
-        width: 6,
-        height: 6,
-        radius: 12,
+        size: 6,
       },
       itemMargin: {
         horizontal: 10,

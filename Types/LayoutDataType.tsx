@@ -18,6 +18,7 @@ export type sidebarItemType = {
     title?: string | undefined;
     icon?: string;
     type: string;
+    permission?: string;
     badge?: string;
     badge2?: boolean;
     badgetxt?: string;

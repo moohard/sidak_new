@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Row, Col, Card, CardBody, Nav, NavItem, NavLink, TabContent, TabPane, Table, Button } from "reactstrap";
 import classnames from "classnames";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
 import { getPegawaiDetail } from "../../api/pegawaiService";
 import axiosInstance from "../../utils/axios";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
@@ -21,6 +21,10 @@ const PegawaiDetail = () => {
   const [pegawai, setPegawai] = useState<any>(null);
   const [keluarga, setKeluarga] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const componentRef = useRef<HTMLDivElement>(null);
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const { jabatan, pangkat, pendidikan, diklat, tandaJasa, loading: loadingRiwayat } = useAppSelector((state) => state.riwayat);
   const { history: tteHistory } = useAppSelector((state) => state.tte);

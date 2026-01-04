@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Button, Badge, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { getSlideList, createSlide, updateSlide, deleteSlide, updateSlideOrder } from "../../../api/slideService";
 import { toast } from "react-toastify";
 import { Plus, Edit, Trash, Move } from "react-feather";
@@ -164,9 +164,9 @@ const SlideManagement = () => {
       cell: (row: any) => (
         <Input 
             type="number" 
-            size="sm" 
+            bsSize="sm" 
             defaultValue={row.order} 
-            style={{ width: "60px" }}
+            style={{ width: "60px" }} 
             onBlur={(e) => handleReorder(row.id, e.target.value)}
         />
       ),

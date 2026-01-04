@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import * as rekapApi from "../../api/rekapService";
+import * as monitoringApi from "../../api/monitoringService";
 
 interface RekapState {
   dashboard: any;
@@ -8,6 +9,7 @@ interface RekapState {
   jenisKelamin: any[];
   usia: any[];
   jabatan: any[];
+  pensiun: any[];
   loading: boolean;
   error: string | null;
 }
@@ -19,6 +21,7 @@ const initialState: RekapState = {
   jenisKelamin: [],
   usia: [],
   jabatan: [],
+  pensiun: [],
   loading: false,
   error: null,
 };
@@ -59,8 +62,6 @@ export const fetchRekapPendidikan = createAsyncThunk(
   }
 );
 
-import * as monitoringApi from "../../api/monitoringService";
-
 export const fetchMonitoringPensiun = createAsyncThunk(
   "rekap/fetchPensiun",
   async (params: any, { rejectWithValue }) => {
@@ -72,30 +73,6 @@ export const fetchMonitoringPensiun = createAsyncThunk(
     }
   }
 );
-
-interface RekapState {
-  dashboard: any;
-  pangkat: any[];
-  pendidikan: any[];
-  jenisKelamin: any[];
-  usia: any[];
-  jabatan: any[];
-  pensiun: any[];
-  loading: boolean;
-  error: string | null;
-}
-
-const initialState: RekapState = {
-  dashboard: null,
-  pangkat: [],
-  pendidikan: [],
-  jenisKelamin: [],
-  usia: [],
-  jabatan: [],
-  pensiun: [],
-  loading: false,
-  error: null,
-};
 
 const rekapSlice = createSlice({
   name: "rekap",

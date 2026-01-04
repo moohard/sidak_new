@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Form, FormGroup, Label, Input, Button } from "reactstrap";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
 import { useAppSelector } from "@/redux/hooks";
 import { getPegawaiData, updatePegawai } from "@/api/pegawaiService";
 import { useForm } from "react-hook-form";

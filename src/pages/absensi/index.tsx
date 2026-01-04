@@ -4,7 +4,7 @@ import DataTable from "react-data-table-component";
 import { Search, MapPin } from "react-feather";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import dynamic from "next/dynamic";
-import Breadcrumbs from "../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../CommonElements/Breadcrumbs";
 
 const MapComponent = dynamic(() => import("../../components/Dashboard/Kepegawaian/DistributionMap"), { ssr: false });
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";

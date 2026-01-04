@@ -25,17 +25,17 @@ const ConfigurationClass = ({ toggle, modal }:PropsTypeProp) => {
                                 <div> {'export class ConfigDB '}&#123;</div>
                                 <div>  {'static data'} = &#123;</div>
                                 <div>       {'settings'}&#58; &#123;</div>
-                                <div>           {'layout_type'}&#58;  '{configDB.settings.layout_type}',</div>
+                                <div>           {'layout_type'}&#58;  &apos;{configDB.settings.layout_type}&apos;,</div>
 
                                 <div>       {'sidebar'}&#58; &#123;</div>
-                                <div>           {'type'}&#58; '{configDB.settings.sidebar.type}',</div>
+                                <div>           {'type'}&#58; &apos;{configDB.settings.sidebar.type}&apos;,</div>
                                 <div>       &#125;,</div>
-                                <div>       {'sidebar_setting'}&#58; '{configDB.settings.sidebar_setting}', </div>
+                                <div>       {'sidebar_setting'}&#58; &apos;{configDB.settings.sidebar_setting}&apos;, </div>
                                 <div>       &#125;,</div>
                                 <div>       {'color'}&#58; &#123;</div>
-                                <div>           {'primary_color'}&#58; '{configDB.color.primary_color}', </div>
-                                <div>           {'secondary_color'}&#58; '{configDB.color.secondary_color}', </div>
-                                <div>           {'mix_background_layout'}&#58; '{configDB.color.mix_background_layout}', </div>
+                                <div>           {'primary_color'}&#58; &apos;{configDB.color.primary_color}&apos;, </div>
+                                <div>           {'secondary_color'}&#58; &apos;{configDB.color.secondary_color}&apos;, </div>
+                                <div>           {'mix_background_layout'}&#58; &apos;{configDB.color.mix_background_layout}&apos;, </div>
                                 <div>       &#125;,</div>
                                 <div>   &#125;</div>
                                 <div> &#125;</div>

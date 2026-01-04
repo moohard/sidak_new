@@ -7,6 +7,8 @@ import AnalyticalCharts from "@/components/Dashboard/Kepegawaian/AnalyticalChart
 import AlertsAndAttendance from "@/components/Dashboard/Kepegawaian/AlertsAndAttendance";
 import dynamic from "next/dynamic";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchAllReferensi } from "@/redux/slices/referensiSlice";
+import { fetchMonitoringPensiun, fetchRekapDashboard, fetchRekapGolongan, fetchRekapPendidikan } from "@/redux/slices/rekapSlice";
 
 const DistributionMap = dynamic(() => import("@/components/Dashboard/Kepegawaian/DistributionMap"), { ssr: false });
 

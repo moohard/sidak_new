@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Badge, Form, FormGroup, Label, Input, Button } from "reactstrap";
 import DataTable from "react-data-table-component";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { fetchMonitoringBerkala } from "@/redux/slices/reportingSlice";
 import { fetchAllReferensi } from "@/redux/slices/referensiSlice";

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card, CardBody, Table, Button, Badge, Modal, ModalHeader, ModalBody } from "reactstrap";
-import Breadcrumbs from "../../../../CommonElements/Breadcrumbs/Breadcrumbs";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchTTEQueue } from "../../redux/slices/tteSlice";
+import Breadcrumbs from "../../../../CommonElements/Breadcrumbs";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { fetchTTEQueue } from "@/redux/slices/tteSlice";
 import { toast } from "react-toastify";
 import { CheckCircle, Eye, FileText } from "react-feather";
 import * as tteApi from "../../../api/tteService";

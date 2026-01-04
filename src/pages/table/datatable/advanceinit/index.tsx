@@ -1,8 +1,8 @@
 import { Container, Row } from "reactstrap";
 import Breadcrumbs from "CommonElements/Breadcrumbs";
-import RowCreateCallback from "@/components/table/DataTable/AdvanceInit/RowCreateCallback";
+import RowCreateCallback from "@/components/Table/DataTable/AdvanceInit/RowCreateCallback";
 import NoSsr from "utils/NoSsr";
-import StockResult from "@/components/table/DataTable/AdvanceInit/StockResult";
+import StockResult from "@/components/Table/DataTable/AdvanceInit/StockResult";
 import { AdvanceInitHeading, DataTables } from "utils/Constant";
 
 const AdvanceInit = () => {
