@@ -4,6 +4,8 @@ import referensiReducer from './slices/referensiSlice';
 import riwayatReducer from './slices/riwayatSlice';
 import rekapReducer from './slices/rekapSlice';
 import absensiReducer from './slices/absensiSlice';
+import tteReducer from './slices/tteSlice';
+import cmsReducer from './slices/cmsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +14,8 @@ export const store = configureStore({
     riwayat: riwayatReducer,
     rekap: rekapReducer,
     absensi: absensiReducer,
+    tte: tteReducer,
+    cms: cmsReducer,
   },
 });
 

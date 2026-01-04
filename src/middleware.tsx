@@ -30,5 +30,9 @@ export const config = {
     "/editor/:path*",
     "/pages/sample-page",
     "/authentication/login",
+    "/pegawai/:path*",
+    "/absensi/:path*",
+    "/admin/:path*",
+    "/portal/:path*",
   ],
 };

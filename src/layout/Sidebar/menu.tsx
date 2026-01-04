@@ -27,8 +27,39 @@ export const MenuList: sidebarMenuType[] = [
             title: "Data Pegawai",
             icon: "user",
             type: "link",
-            path: "/kepegawaian/data-pegawai", // Placeholder path
+            path: "/pegawai",
             active: false,
+            permission: "pegawai:view"
+        },
+        {
+            title: "Absensi",
+            icon: "calendar",
+            type: "link",
+            path: "/absensi",
+            active: false,
+            permission: "absensi:view"
+        }
+    ]
+  },
+  {
+    title: "RBAC",
+    menucontent: "Access Control",
+    Items: [
+        {
+            title: "Manajemen Role",
+            icon: "shield",
+            type: "link",
+            path: "/admin/rbac/roles",
+            active: false,
+            permission: "rbac:view"
+        },
+        {
+            title: "Manajemen User",
+            icon: "users",
+            type: "link",
+            path: "/admin/users",
+            active: false,
+            permission: "users:view"
         }
     ]
   }

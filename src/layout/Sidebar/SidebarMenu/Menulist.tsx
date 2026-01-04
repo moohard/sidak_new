@@ -5,9 +5,10 @@ import layoutContext from "helper/Layout";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { canAccess } from "../../../utils/rbac";
 
 type menuListType = {
-  MENUITEMS: sidebarItemType[];
+  MENUITEMS: any[]; // Changed from sidebarItemType to any to support permission prop
   handleActive: (title: string, level: number) => void;
   active: string;
   setActiveLink: Function;
@@ -18,6 +19,16 @@ type menuListType = {
 };
 const Menulist = ({setActive,handleActive,active,MENUITEMS,level,activeLink,setActiveLink}: menuListType) => {
   const { pinedMenu, setPinedMenu } = useContext(layoutContext);
+  
+  // Filter menu items based on permission
+  const filteredMenuItems = MENUITEMS.filter(item => {
+    if (item.permission) {
+      const [module, action] = item.permission.split(":");
+      return canAccess(module, action);
+    }
+    return true; // No permission required
+  });
+
   const handlePined = (value: string | undefined) => {
     if (!pinedMenu.includes(value || "")) {
       setPinedMenu((data) => [...data, value || ""]);
@@ -32,7 +43,7 @@ const Menulist = ({setActive,handleActive,active,MENUITEMS,level,activeLink,setA
 
   return (
     <>
-      {MENUITEMS.map((item, i) => (
+      {filteredMenuItems.map((item, i) => (
         <li key={i} className={`${pinedMenu.includes(item.title || "") ? "pined" : ""} ${level == 0 ? "sidebar-list" : ""}  `} >
           {level === 0 && ( <i className="fa fa-thumb-tack" onClick={() => handlePined(item.title)}></i>)}
           <a

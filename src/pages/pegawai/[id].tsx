@@ -7,6 +7,7 @@ import { getPegawaiDetail } from "../../api/pegawaiService";
 import axiosInstance from "../../utils/axios";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchAllRiwayat, clearRiwayat } from "../../redux/slices/riwayatSlice";
+import { fetchTTEHistory } from "../../redux/slices/tteSlice";
 import CareerTimeline from "../../components/pegawai/CareerTimeline";
 import { useReactToPrint } from "react-to-print";
 import BiodataPDF from "../../components/pegawai/BiodataPDF";
@@ -22,11 +23,7 @@ const PegawaiDetail = () => {
   const [loading, setLoading] = useState(true);
 
   const { jabatan, pangkat, pendidikan, diklat, tandaJasa, loading: loadingRiwayat } = useAppSelector((state) => state.riwayat);
-
-  const componentRef = React.useRef(null);
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
+  const { history: tteHistory } = useAppSelector((state) => state.tte);
 
   useEffect(() => {
     if (id) {
@@ -38,6 +35,7 @@ const PegawaiDetail = () => {
           
           if (dataPegawai.nip) {
             dispatch(fetchAllRiwayat(dataPegawai.nip));
+            dispatch(fetchTTEHistory({ nip: dataPegawai.nip }));
             const keluargaRes = await axiosInstance.get(`/kepegawaian/pegawaikeluarga/list/${dataPegawai.nip}`);
             setKeluarga(keluargaRes.data.data || []);
           }
@@ -255,8 +253,33 @@ const PegawaiDetail = () => {
                   </TabPane>
 
                   <TabPane tabId="4">
-                    <h5>Arsip Digital</h5>
-                    <p className="text-muted">Fitur arsip digital akan diimplementasikan segera.</p>
+                    <h5>Arsip Digital Terverifikasi</h5>
+                    <Table responsive striped size="sm">
+                      <thead>
+                        <tr>
+                          <th>Nama Dokumen</th>
+                          <th>No. Dokumen</th>
+                          <th>Tgl TTE</th>
+                          <th>Pejabat TTD</th>
+                          <th>Aksi</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {tteHistory.length > 0 ? tteHistory.map((item, idx) => (
+                          <tr key={idx}>
+                            <td>{item.jenis_dokumen}</td>
+                            <td>{item.no_dokumen}</td>
+                            <td>{item.signed_at}</td>
+                            <td>{item.pejabat_nama}</td>
+                            <td>
+                              <Button color="primary" size="sm" outline onClick={() => window.open(`${process.env.NEXT_PUBLIC_API_URL}/kepegawaian/rwpegawaittd/${item.id}/file`, "_blank")}>
+                                Unduh / Lihat
+                              </Button>
+                            </td>
+                          </tr>
+                        )) : <tr><td colSpan={5} className="text-center">Belum ada dokumen digital terverifikasi.</td></tr>}
+                      </tbody>
+                    </Table>
                   </TabPane>
                 </TabContent>
               </CardBody>

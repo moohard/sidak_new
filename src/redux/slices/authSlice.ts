@@ -7,7 +7,8 @@ interface User {
   name: string;
   username: string;
   group: string;
-  // Add other user properties as needed
+  nip?: string;
+  permissions: string[]; // List of module identifiers or specific permission strings
 }
 
 interface AuthState {
@@ -19,7 +20,7 @@ interface AuthState {
 }
 
 const initialState: AuthState = {
-  user: null,
+  user: typeof window !== 'undefined' && localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')!) : null,
   token: Cookies.get('token') || null,
   isAuthenticated: !!Cookies.get('token'),
   loading: false,
@@ -52,9 +53,11 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
       Cookies.remove('token');
+      localStorage.removeItem('user');
     },
     setUser: (state, action: PayloadAction<User>) => {
         state.user = action.payload;
+        localStorage.setItem('user', JSON.stringify(action.payload));
     }
   },
   extraReducers: (builder) => {
@@ -66,12 +69,11 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.loading = false;
         state.isAuthenticated = true;
-        // Adjust payload structure based on actual API response
-        // Assuming response.data contains { token: '...', user: { ... } }
         const { token, user } = action.payload;
         state.token = token;
         state.user = user;
-        Cookies.set('token', token, { expires: 1 }); // Expires in 1 day
+        Cookies.set('token', token, { expires: 1 });
+        localStorage.setItem('user', JSON.stringify(user));
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
